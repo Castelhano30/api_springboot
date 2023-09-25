@@ -1,8 +1,12 @@
-import org.springframework.beans.factory.annotation.Autowired;
+package com.trabalhospring.api.controller;
+
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import com.trabalhospring.api.model.Lutador;
+import com.trabalhospring.api.service.LutadorService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -13,7 +17,7 @@ public class LutadorController {
 
     private final LutadorService lutadorService;
 
-    @Autowired
+    //@Autowired
     public LutadorController(LutadorService lutadorService) {
         this.lutadorService = lutadorService;
     }

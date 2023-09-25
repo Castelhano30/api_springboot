@@ -1,3 +1,5 @@
+package com.trabalhospring.api.model;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "lutas")
+@Table(name = "luta")
 public class Luta {
 
     @Id
@@ -42,4 +44,5 @@ public class Luta {
     public void setVitoria(Boolean vitoria) {
         this.vitoria = vitoria;
     }
+
 }

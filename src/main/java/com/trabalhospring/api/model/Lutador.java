@@ -1,3 +1,5 @@
+package com.trabalhospring.api.model;
+
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -10,7 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
@@ -65,6 +66,12 @@ public class Lutador {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void adicionarLuta(Luta luta){
+
+        this.lutas.add(luta);
+
     }
 
 }
