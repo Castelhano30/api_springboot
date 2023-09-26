@@ -10,5 +10,4 @@ import com.trabalhospring.api.model.Luta;
 @Repository
 public interface LutaRepository extends JpaRepository<Luta, Long> {
     long countById(long Id);
-
 }

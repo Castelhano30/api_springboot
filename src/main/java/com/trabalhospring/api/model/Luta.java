@@ -45,4 +45,5 @@ public class Luta {
         this.vitoria = vitoria;
     }
 
+
 }
