@@ -38,7 +38,6 @@ public class LutadorService {
             Lutador lutadorExistente = optionalLutador.get();
             lutadorExistente.setNome(lutador.getNome());
             lutadorExistente.setCpf(lutador.getCpf());
-            // Defina qualquer outra propriedade que você precise atualizar aqui
 
             return lutadorRepository.save(lutadorExistente);
         } else {
