@@ -1,6 +1,6 @@
 package com.trabalhospring.api.controller;
 
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class LutadorController {
 
     private final LutadorService lutadorService;
 
-    //@Autowired
+    @Autowired
     public LutadorController(LutadorService lutadorService) {
         this.lutadorService = lutadorService;
     }

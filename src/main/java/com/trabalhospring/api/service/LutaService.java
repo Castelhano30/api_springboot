@@ -1,6 +1,6 @@
 package com.trabalhospring.api.service;
 
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.trabalhospring.api.model.Luta;
@@ -14,7 +14,7 @@ public class LutaService {
 
     private final LutaRepository lutaRepository;
 
-    //@Autowired
+    @Autowired
     public LutaService(LutaRepository lutaRepository) {
         this.lutaRepository = lutaRepository;
     }
@@ -38,7 +38,6 @@ public class LutaService {
             Luta lutaExistente = optionalLuta.get();
             lutaExistente.setLocal(luta.getLocal());
             lutaExistente.setVitoria(luta.getVitoria());
-            // Defina qualquer outra propriedade que você precise atualizar aqui
 
             return lutaRepository.save(lutaExistente);
         } else {

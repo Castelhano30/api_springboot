@@ -1,6 +1,6 @@
 package com.trabalhospring.api.service;
 
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.trabalhospring.api.model.Lutador;
@@ -14,7 +14,7 @@ public class LutadorService {
 
     private final LutadorRepository lutadorRepository;
 
-    //@Autowired
+    @Autowired
     public LutadorService(LutadorRepository lutadorRepository) {
         this.lutadorRepository = lutadorRepository;
     }
