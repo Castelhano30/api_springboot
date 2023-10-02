@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "luta")
@@ -16,9 +17,11 @@ public class Luta {
     private long id;
 
     @Column(nullable = false)
+    @NotBlank (message = "Campo local nao pode ser vazio")
     private String local;
 
     @Column(nullable = false)
+    @NotBlank (message = "Campo vitoria nao pode ser vazio")
     private Boolean vitoria;
 
     public long getId() {
