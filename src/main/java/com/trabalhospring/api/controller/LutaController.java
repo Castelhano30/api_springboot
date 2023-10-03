@@ -46,7 +46,6 @@ public class LutaController {
     @Operation(summary = "Criando luta", method = "POST")
     public ResponseEntity<Luta> createLuta(@PathVariable("idLutador") Long idLutador, @RequestBody Luta luta) {
         try {
-            // Primeiro, verifique se o lutador existe pelo ID.
             Optional<Lutador> lutador = lutadorRepository.findById(idLutador);
 
             if (!lutador.isPresent())
