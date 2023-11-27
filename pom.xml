@@ -81,6 +81,17 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-storage-blob</artifactId>
+            <version>12.23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-storage-common</artifactId>
+            <version>12.23.0</version>
+        </dependency>
 		
 	</dependencies>
 

@@ -1,6 +1,11 @@
 package com.trabalhospring.api.model;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.trabalhospring.api.exception.LutadorException;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -35,6 +40,9 @@ public class Lutador {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "lutas")
     private List<Luta> lutas;
+
+    @Column(nullable = true)
+    private String urlImage;
     
     public List<Luta> getLutas() {
       return lutas;
@@ -72,6 +80,14 @@ public class Lutador {
 
         this.lutas.add(luta);
 
+    }
+    
+    public String getUrlImage() {
+        return this.urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 
 }

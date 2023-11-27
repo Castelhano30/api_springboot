@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.trabalhospring.api.model.Lutador;
 import com.trabalhospring.api.service.LutadorService;
@@ -19,12 +20,9 @@ import java.util.List;
 @Tag (name = "Lutador", description = "API DE LUTADORES")
 public class LutadorController {
 
-    private final LutadorService lutadorService;
-
     @Autowired
-    public LutadorController(LutadorService lutadorService) {
-        this.lutadorService = lutadorService;
-    }
+    private  LutadorService lutadorService;
+   
 
     @GetMapping
     @Operation(summary = "Buscando todos os lutadores", method = "GET")
@@ -70,6 +68,17 @@ public class LutadorController {
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/{idLutador}/uploadLutadorImage")
+    public ResponseEntity<String> uploadLutadorImage(@PathVariable("idLutador") Long idLutador,
+            @RequestParam("file") MultipartFile file) {
+        try {
+            lutadorService.uploadPhotoFileToLutador(file, idLutador);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
         }
     }
 }

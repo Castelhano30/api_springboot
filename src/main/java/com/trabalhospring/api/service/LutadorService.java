@@ -2,22 +2,26 @@ package com.trabalhospring.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.trabalhospring.api.exception.LutadorException;
 import com.trabalhospring.api.model.Lutador;
 import com.trabalhospring.api.repository.LutadorRepository;
+import com.trabalhospring.api.service.AzureStorageAccountService;
 
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class LutadorService {
 
-    private final LutadorRepository lutadorRepository;
+    @Autowired
+    private LutadorRepository lutadorRepository;
 
     @Autowired
-    public LutadorService(LutadorRepository lutadorRepository) {
-        this.lutadorRepository = lutadorRepository;
-    }
+    private AzureStorageAccountService azureStorageAccountService;
+    
 
     public List<Lutador> listarTodosLutadores() {
         return lutadorRepository.findAll();
@@ -53,6 +57,21 @@ public class LutadorService {
         } else {
             return false;
         }
+    }
+
+
+    public void uploadPhotoFileToLutador(MultipartFile file, Long id) throws Exception {
+
+        Optional<Lutador> opLutador = this.lutadorRepository.findById(id);
+
+        if (opLutador.isPresent() == false) {
+            throw new Exception("Não encontrei o post a ser atualizado");
+        }
+
+        Lutador lutador = opLutador.get();
+        String ulrImage = this.azureStorageAccountService.uploadFileToAzure(file);
+        lutador.setUrlImage(ulrImage);
+        this.lutadorRepository.save(lutador);
     }
 }
 
